@@ -24,7 +24,7 @@ class ResetPasswordController extends Controller
 
         if (isset($user->password) != ""){
 $response = Http::withHeaders([
-            'api-key' => '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',
+            'api-key' => env('API_SENDINBLUE'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
         ])->post('https://api.brevo.com/v3/smtp/email', [
