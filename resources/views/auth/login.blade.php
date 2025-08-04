@@ -27,16 +27,35 @@
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
 
-            <div class="mt-4">
-    <x-input-label for="role" :value="__('Role')" class="text-blue-700" />
-    <select id="role" name="role" required
-        class="block mt-1 w-full border-blue-300 focus:ring-blue-500 focus:border-blue-500 rounded-md shadow-sm">
-        <option value="guru">Guru</option>
-        <option value="siswa">Siswa</option>
-        <option value="admin">Admin</option>
-              </select>
-             <x-input-error :messages="$errors->get('role')" class="mt-2" />
-          </div>
+            <div x-data="{ role: '{{ old('role') }}' }">
+    <!-- Role -->
+    <div class="mt-4">
+        <x-input-label for="role" :value="__('Role')" class="text-blue-700" />
+        <select id="role" name="role" x-model="role" required
+            class="block mt-1 w-full border-blue-300 focus:ring-blue-500 focus:border-blue-500 rounded-md shadow-sm">
+            <option value="">Pilih Role</option>
+            <option value="admin">Admin</option>
+            <option value="guru">Guru</option>
+            <option value="eskul">Pelatih Ekstrakurikuler</option>
+        </select>
+        <x-input-error :messages="$errors->get('role')" class="mt-2" />
+    </div>
+
+    <!-- Cabang Eskul -->
+    <div x-show="role === 'eskul'" x-transition class="mt-4">
+        <x-input-label for="cabang_eskul" :value="__('Cabang Eskul')" class="text-blue-700" />
+        <select id="cabang_eskul" name="cabang_eskul"
+            class="block mt-1 w-full border-blue-300 focus:ring-purple-500 focus:border-purple-500 rounded-md shadow-sm">
+            <option value="">-- Pilih Cabang --</option>
+            <option value="Futsal">Futsal</option>
+            <option value="Basket">Basket</option>
+            <option value="Pramuka">Pramuka</option>
+            <option value="Paskibra">Paskibra</option>
+        </select>
+        <x-input-error :messages="$errors->get('cabang_eskul')" class="mt-2" />
+    </div>
+</div>
+
 
             <!-- Actions -->
             <div class="flex items-center justify-between mt-6">
@@ -44,9 +63,11 @@
                         {{ __('Forgot your password?') }}
                     </a>
 
-                <x-primary-button class="ml-3 bg-blue-700 hover:bg-blue-800">
-                    {{ __('Log in') }}
-                </x-primary-button>
+                <button type="submit"
+                        class="ml-3 px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        {{ __('Login') }}
+                </button>
+
             </div>
         </form>
     </div>

@@ -35,18 +35,24 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'role' => ['required', 'string'],
+            'cabang_eskul' => ['nullable', 'required_if:role,eskul', 'string'],
         ]);
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => $request->role,
+           'name' => $request->name,
+           'email' => $request->email,
+           'password' => Hash::make($request->password),
+           'role' => $request->role,
+           'cabang_eskul' => $request->role == 'eskul' ? $request->cabang_eskul : null,
         ]);
+
 
         event(new Registered($user));
 
         return redirect(route('dashboard', absolute: false));
+        }
+        else{
+            return redirect()->to('/dashboard');
         }
     }
 }
