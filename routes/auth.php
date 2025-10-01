@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
 
-    Route::get('administrator', [AuthenticatedSessionController::class, 'create'])
-        ->name('login');
+    Route::get('/administrator', function () {
+        return view('auth.login');
+    })->name('login');
 
     Route::post('adminprcs', [AuthenticatedSessionController::class, 'store'])->name('adminprcs');
 

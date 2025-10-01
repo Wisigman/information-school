@@ -1,363 +1,343 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMKN 8 Jakarta | Sistem Absensi & Eskul</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .hero-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .transition-all {
-            transition: all 0.3s ease;
-        }
-    </style>
-</head>
-<body class="bg-gray-50">
-    <!-- Navbar -->
-    <nav class="bg-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center">
-                        <img class="h-10 w-auto" src="https://smkn8jakarta.sch.id/wp-content/uploads/2019/12/SMK-N-8-JAKARTA.png" alt="Logo SMKN 8 Jakarta">
-                        <span class="ml-2 text-xl font-bold text-blue-800">SMKN 8 JAKARTA</span>
-                    </div>
-                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                        <a href="#" class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                            Beranda
-                        </a>
-                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                            Absensi
-                        </a>
-                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                            Eskul
-                        </a>
-                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                            Pengumuman
-                        </a>
-                    </div>
-                </div>
-                <div class="hidden sm:ml-6 sm:flex sm:items-center">
-                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all">
-                        <i class="fas fa-sign-in-alt mr-2"></i>Login
-                    </button>
-                </div>
-                <div class="-mr-2 flex items-center sm:hidden">
-                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
-                        <span class="sr-only">Open main menu</span>
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
+@extends('layouts.app')
+
+@section('title', 'Beranda - SISKUL 8')
+
+@section('content')
+
+  <!-- Fullscreen Image Carousel -->
+  <section class="relative w-full h-screen overflow-hidden">
+    <div class="relative w-full h-full">
+      <img 
+        id="carouselImage" 
+        src="/storage/slide/slide1.png" 
+        class="absolute inset-0 w-full h-full object-cover" 
+        alt="Carousel Image">
+      <div class="absolute inset-0 flex flex-col justify-center items-center bg-black/40 text-center text-white px-4">
+        <h2 class="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow">Selamat Datang di Website Siskul Delapan</h2>
+        <p class="text-lg md:text-xl max-w-2xl mx-auto drop-shadow">Temukan informasi terbaru seputar kegiatan eskul, absensi guru maupun absensi siswa SMKN 8 Jakarta.</p>
+        <button class="mt-6 px-6 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition shadow" onclick="window.location.href='/login'">Log in into your Dashboard</button>
+      </div>
+      <!-- tombol navigasi -->
+      {{-- <button onclick="changeSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-blue-600 text-white px-3 py-2 rounded-full shadow hover:bg-blue-800 z-10">&#8592;</button>
+      <button onclick="changeSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-blue-600 text-white px-3 py-2 rounded-full shadow hover:bg-blue-800 z-10">&#8594;</button> --}}
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="team" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold text-blue-800 mb-10">Team</h3>
+      <div class="grid grid-cols-2 md:grid-cols-6 gap-8">
+        <div class="flex flex-col items-center">
+          <img src="/storage/team/akmal.jpg" class="mb-5 w-40 h-40 rounded-full object-cover border border-gray-300 shadow" alt="Team Member 1">
+          <p class="font-semibold">Muhammad Akmal Fadli</p>
+          <small>Backend Programmer</small>
+        </div>
+        <div class="flex flex-col items-center">
+          <img src="/storage/team/azra.jpg" class="mb-5 w-40 h-40 rounded-full object-cover border border-gray-300 shadow" alt="Team Member 2">
+          <p class="font-semibold">Azmar Syifa Azra</p>
+          <small>UI/UX</small>
+        </div>
+        <div class="flex flex-col items-center">
+          <img src="/storage/team/azzam.jpg" class="mb-5 w-40 h-40 rounded-full object-cover border border-gray-300 shadow" alt="Team Member 3">
+          <p class="font-semibold">Rizki Khoirul Azzam</p>
+          <small>UI/UX</small>
+        </div>
+        <div class="flex flex-col items-center">
+          <img src="/storage/team/omar.jpg" class="mb-5 w-40 h-40 rounded-full object-cover border border-gray-300 shadow" alt="Team Member 4">
+          <p class="font-semibold">Moeamar Hamzah Omar Ollie</p>
+          <small>UI/UX</small>
+        </div>
+        <div class="flex flex-col items-center">
+          <img src="/storage/team/gagah.jpg" class="mb-5 w-40 h-40 rounded-full object-cover border border-gray-300 shadow" alt="Team Member 5">
+          <p class="font-semibold">Wisanggeni Gagah Ramadhan</p>
+          <small>Frontend Programmer</small>
+        </div>
+        <div class="flex flex-col items-center">
+          <img src="/storage/team/yazid.jpg" class="mb-5 w-40 h-40 rounded-full object-cover border border-gray-300 shadow" alt="Team Member 6">
+          <p class="font-semibold">Yazid Alfa</p>
+          <small>Data Analis</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kegiatan -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+        <div class="flex flex-col lg:flex-row items-center lg:space-x-12">
+            
+            <a href="#" class="w-full lg:w-1/3 p-4 bg-white shadow-xl rounded-lg transform transition duration-300 hover:scale-[1.02]">
+                <img class="w-full h-auto rounded-md" 
+                     src="https://smkn8jakarta.sch.id/wp-content/uploads/2019/12/SMK-N-8-JAKARTA.png" 
+                     alt="HARI KESAKTIAN PANCASILA" />
+            </a>
+            
+            <div class="w-full lg:w-2/3 mt-6 lg:mt-0 lg:text-left">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">HARI KESAKTIAN PANCASILA</h2>
+                <span class="text-lg text-gray-600 leading-relaxed">
+                    1 Oktober, Selamat memperingati Hari Kesaktian Pancasila! mari kita jaga persatuan dan semangat kebangsaan
+                </span>
             </div>
         </div>
 
-        <!-- Mobile menu -->
-        <div class="hidden sm:hidden" id="mobile-menu">
-            <div class="pt-2 pb-3 space-y-1">
-                <a href="#" class="bg-blue-50 border-blue-500 text-blue-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Beranda</a>
-                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Absensi</a>
-                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Eskul</a>
-                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Pengumuman</a>
-                <div class="mt-4 pl-3 pr-4 py-2">
-                    <button class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all">
-                        <i class="fas fa-sign-in-alt mr-2"></i>Login
-                    </button>
-                </div>
+        <div class="flex flex-col lg:flex-row items-center lg:space-x-12">
+            
+            <div class="w-full lg:w-2/3 mt-6 lg:mt-0 lg:text-right order-2 lg:order-1">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">HUT SMKN 8 Ke-60</h2>
+                <span class="text-lg text-gray-600 leading-relaxed">
+                    30 November, Selamat memperingati HUT SMKN 8 Jakarta ke-60.
+                </span>
             </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <div class="hero-gradient text-white">
-        <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-                    Sistem Absensi & Ekstrakurikuler
-                </h1>
-                <p class="mt-6 max-w-lg mx-auto text-xl">
-                    Selamat datang di portal digital SMKN 8 Jakarta untuk manajemen absensi dan kegiatan ekstrakurikuler
-                </p>
-                <div class="mt-10 flex justify-center space-x-4">
-                    <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-blue-700 bg-white hover:bg-blue-50">
-                        <i class="fas fa-calendar-check mr-2"></i> Absensi Sekarang
-                    </a>
-                    <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-800 bg-opacity-80 hover:bg-opacity-100">
-                        <i class="fas fa-running mr-2"></i> Daftar Eskul
-                    </a>
+            <a href="#" class="w-full lg:w-1/3 p-4 bg-white shadow-xl rounded-lg order-1 lg:order-2 transform transition duration-300 hover:scale-[1.02]">
+                <img class="w-full h-auto rounded-md" 
+                     src="https://smkn8jakarta.sch.id/wp-content/uploads/2019/12/SMK-N-8-JAKARTA.png" 
+                     alt="HUT SMKN 8 Ke-60" />
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- Info 4 Panel -->
+<section class="py-10 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+            
+            <a href="/juara" class="p-4 sm:p-6 text-center bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                <div class="w-12 h-12 mx-auto mb-2 flex items-center justify-center border-blue-500 rounded-lg text-blue-500 text-2xl">
+                    <i class="fas fa-trophy text-3xl"></i>
                 </div>
-            </div>
+                <span class="text-sm font-semibold text-gray-700">Kejuaraan</span>
+            </a>
+            
+            <a href="/eskul" class="p-4 sm:p-6 text-center bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                <div class="w-12 h-12 mx-auto mb-2 flex items-center justify-center border-blue-500 rounded-lg text-blue-500 text-2xl">
+                    <i class="fa-regular fa-soccer-ball text-3xl"></i>
+                </div>
+                <span class="text-sm font-semibold text-gray-700">Ekstrakulikuler</span>
+            </a>
+            
+            <a href="/berita" class="p-4 sm:p-6 text-center bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                <div class="w-12 h-12 mx-auto mb-2 flex items-center justify-center border-blue-500 rounded-lg text-blue-500 text-2xl">
+                    <i class="fa-solid fa-newspaper text-3xl"></i>
+                </div>
+                <span class="text-sm font-semibold text-gray-700">Berita</span>
+            </a>
+            
+            <a href="/agenda" class="p-4 sm:p-6 text-center bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                <div class="w-12 h-12 mx-auto mb-2 flex items-center justify-center border-blue-500 rounded-lg text-blue-500 text-2xl">
+                    <i class="fas fa-pencil-square text-3xl"></i>
+                </div>
+                <span class="text-sm font-semibold text-gray-700">Agenda</span>
+            </a>
         </div>
     </div>
+</section>
 
-    <!-- Features Section -->
-    <div class="py-12 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:text-center">
-                <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">Fitur Utama</h2>
-                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                    Layanan Digital SMKN 8 Jakarta
-                </p>
-                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-                    Sistem terintegrasi untuk memudahkan proses administrasi sekolah
-                </p>
-            </div>
-
-            <div class="mt-10">
-                <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-                    <!-- Feature 1 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm card-hover transition-all">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
-                            <i class="fas fa-fingerprint text-xl"></i>
-                        </div>
-                        <div class="mt-6">
-                            <h3 class="text-lg font-medium text-gray-900">Absensi Digital</h3>
-                            <p class="mt-2 text-base text-gray-500">
-                                Sistem absensi berbasis QR Code dengan verifikasi wajah untuk keamanan dan akurasi data.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Feature 2 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm card-hover transition-all">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white">
-                            <i class="fas fa-users text-xl"></i>
-                        </div>
-                        <div class="mt-6">
-                            <h3 class="text-lg font-medium text-gray-900">Manajemen Eskul</h3>
-                            <p class="mt-2 text-base text-gray-500">
-                                Pendaftaran, pengelolaan, dan pelaporan kegiatan ekstrakurikuler secara online.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Feature 3 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm card-hover transition-all">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-500 text-white">
-                            <i class="fas fa-chart-line text-xl"></i>
-                        </div>
-                        <div class="mt-6">
-                            <h3 class="text-lg font-medium text-gray-900">Analisis Data</h3>
-                            <p class="mt-2 text-base text-gray-500">
-                                Laporan statistik kehadiran dan prestasi eskul dalam bentuk dashboard interaktif.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- Kejuaraan -->
+<section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold text-gray-800">Kejuaraan</h1>
         </div>
-    </div>
 
-    <!-- Quick Access Section -->
-    <div class="bg-gray-100 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-2xl font-bold text-gray-900 mb-8">Akses Cepat</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <a href="#" class="bg-white p-6 rounded-lg shadow-sm text-center card-hover transition-all">
-                    <div class="mx-auto h-12 w-12 text-blue-600">
-                        <i class="fas fa-qrcode text-3xl"></i>
-                    </div>
-                    <h3 class="mt-4 font-medium text-gray-900">Scan Absen</h3>
-                </a>
-                <a href="#" class="bg-white p-6 rounded-lg shadow-sm text-center card-hover transition-all">
-                    <div class="mx-auto h-12 w-12 text-green-600">
-                        <i class="fas fa-clipboard-list text-3xl"></i>
-                    </div>
-                    <h3 class="mt-4 font-medium text-gray-900">Daftar Eskul</h3>
-                </a>
-                <a href="#" class="bg-white p-6 rounded-lg shadow-sm text-center card-hover transition-all">
-                    <div class="mx-auto h-12 w-12 text-yellow-600">
-                        <i class="fas fa-calendar-alt text-3xl"></i>
-                    </div>
-                    <h3 class="mt-4 font-medium text-gray-900">Jadwal</h3>
-                </a>
-                <a href="#" class="bg-white p-6 rounded-lg shadow-sm text-center card-hover transition-all">
-                    <div class="mx-auto h-12 w-12 text-red-600">
-                        <i class="fas fa-bullhorn text-3xl"></i>
-                    </div>
-                    <h3 class="mt-4 font-medium text-gray-900">Pengumuman</h3>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Announcement Section -->
-    <div class="py-12 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:flex lg:items-center lg:justify-between">
-                <div class="flex-1 min-w-0">
-                    <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
-                        Pengumuman Terbaru
-                    </h2>
-                </div>
-                <div class="mt-5 flex lg:mt-0 lg:ml-4">
-                    <a href="#" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                        <i class="fas fa-list mr-2"></i> Lihat Semua
-                    </a>
-                </div>
+        <div class="lg:flex lg:items-center lg:space-x-12">
+            
+            <div class="lg:w-1/2 flex justify-center items-center relative mb-10 lg:mb-0">
+                <img src="https://www.smandakebumen.sch.id/assets/img/landing/kejuaraan.png" alt="Kejuaraan Illustration" class="max-w-full h-auto">
             </div>
 
-            <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                <!-- Announcement 1 -->
-                <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
-                    <div class="p-6">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-blue-500 rounded-md p-2">
-                                <i class="fas fa-info-circle text-white"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-medium text-gray-900">Pembukaan Pendaftaran Eskul</h3>
-                                <p class="mt-1 text-sm text-gray-500">12 Juni 2023</p>
-                            </div>
-                        </div>
-                        <p class="mt-4 text-sm text-gray-600">
-                            Pendaftaran ekstrakurikuler semester genap tahun ajaran 2023/2024 dibuka mulai tanggal 15 Juni 2023.
-                        </p>
-                        <div class="mt-6">
-                            <a href="#" class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-500">
-                                Baca selengkapnya <i class="fas fa-chevron-right ml-1"></i>
-                            </a>
-                        </div>
+            <div class="lg:w-1/2 flex items-center justify-center relative">
+                
+                <div class="bg-white p-4 rounded-xl shadow-lg border border-gray-100 max-w-sm w-full relative overflow-hidden">
+                    <div class="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                        <i class="fa fa-eye mr-1"></i> 67,41 rb 
                     </div>
-                </div>
+                    <img src="URL_VIDEO_THUMBNAIL" alt="Video Thumbnail" class="w-full h-40 object-cover rounded-lg mb-3">
+                    <div class="absolute inset-0 bg-black opacity-20"></div>
 
-                <!-- Announcement 2 -->
-                <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
-                    <div class="p-6">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-green-500 rounded-md p-2">
-                                <i class="fas fa-calendar-check text-white"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-medium text-gray-900">Perubahan Sistem Absensi</h3>
-                                <p class="mt-1 text-sm text-gray-500">5 Juni 2023</p>
-                            </div>
-                        </div>
-                        <p class="mt-4 text-sm text-gray-600">
-                            Mulai 1 Juli 2023, absensi akan menggunakan sistem QR Code dengan verifikasi wajah.
-                        </p>
-                        <div class="mt-6">
-                            <a href="#" class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-500">
-                                Baca selengkapnya <i class="fas fa-chevron-right ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Announcement 3 -->
-                <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
-                    <div class="p-6">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-purple-500 rounded-md p-2">
-                                <i class="fas fa-trophy text-white"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-medium text-gray-900">Prestasi Eskul Basket</h3>
-                                <p class="mt-1 text-sm text-gray-500">28 Mei 2023</p>
-                            </div>
-                        </div>
-                        <p class="mt-4 text-sm text-gray-600">
-                            Tim basket SMKN 8 Jakarta meraih juara 2 dalam kompetisi antar sekolah se-Jabodetabek.
-                        </p>
-                        <div class="mt-6">
-                            <a href="#" class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-500">
-                                Baca selengkapnya <i class="fas fa-chevron-right ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">SMKN 8 Jakarta</h3>
-                    <p class="text-gray-300 text-sm">
-                        Jl. Pejaten Raya Pejaten Barat Pasar Minggu Jakarta Selatan 12510
+                    <p class="text-sm font-semibold text-gray-800 text-center relative z-10 p-2">
+                        SMKN 8 JAKARTA GONDOL JUARA ROBOTIK
                     </p>
                 </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Tautan Cepat</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Beranda</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Absensi</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Eskul</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Pengumuman</a></li>
-                    </ul>
+
+                <button class="absolute left-0 -ml-6 p-2 bg-gray-200 rounded-full shadow-md hover:bg-gray-300 transition-colors z-20">
+                    <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button class="absolute right-0 -mr-6 p-2 bg-gray-200 rounded-full shadow-md hover:bg-gray-300 transition-colors z-20">
+                    <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Ekstra -->
+<section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold text-gray-800">Ekstrakurikuler</h1>
+        </div>
+
+        <div class="lg:flex lg:items-center lg:space-x-12">
+            
+            <div class="lg:w-1/2 flex items-center justify-center relative mb-10 lg:mb-0">
+                <button class="absolute left-0 -ml-12 p-3 bg-gray-200 rounded-full shadow-md hover:bg-gray-300 transition-colors z-10">
+                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button class="absolute right-0 -mr-12 p-3 bg-gray-200 rounded-full shadow-md hover:bg-gray-300 transition-colors z-10">
+                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+
+                <div class="bg-white p-8 rounded-lg shadow-xl text-center border border-gray-100 max-w-sm w-full">
+                    <img src="https://smkn8jakarta.sch.id/wp-content/uploads/2019/12/SMK-N-8-JAKARTA.png" alt="PASKIBRA Logo" class="w-32 h-32 mx-auto mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">PASKIBRA</h2>
+                    <p class="text-lg text-gray-600 mb-6">PASKIBRA DELAPAN</p>
+                    <a href="#" class="inline-flex items-center justify-center bg-white border-2 border-blue-500 text-blue-500 font-semibold py-3 px-8 rounded-full hover:bg-blue-500 hover:text-white transition duration-300 shadow-md">
+                        SELENGKAPNYA
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
                 </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Kontak</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-gray-300 text-sm"><i class="fas fa-phone-alt mr-2"></i> +6221-7996493</li>
-                        <li class="flex items-center text-gray-300 text-sm"><i class="fas fa-envelope mr-2"></i> info@smkn8jakarta.sch.id</li>
-                    </ul>
+            </div>
+
+            <div class="lg:w-1/2 flex justify-center items-center mt-10 lg:mt-0">
+                <img src="https://www.smandakebumen.sch.id/assets/img/landing/ekstra.png" alt="Ekstra Illustration" class="max-w-full h-auto">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+  <!-- Informasi App -->
+  <section id="informasi" class="py-16 bg-white">
+    <div class="container mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold text-blue-800 mb-6">Informasi App</h3>
+      <p class="max-w-2xl mx-auto text-gray-700">
+        Aplikasi ini dibangun menggunakan <span class="font-semibold">Laravel</span> sebagai backend utama 
+        dan menerapkan metode <span class="font-semibold">Waterfall</span> dalam pengembangannya. 
+        Metode ini memastikan setiap tahap dari perencanaan, desain, implementasi, hingga pengujian dilakukan secara runtut dan sistematis.
+      </p>
+    </div>
+  </section>
+  
+  <!-- Visi & Misi -->
+  <section id="visi" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold text-blue-800 mb-6">Visi & Misi</h3>
+      <p class="max-w-2xl mx-auto text-gray-700">
+        Visi aplikasi ini adalah menghadirkan sistem absensi yang efisien, transparan, dan mudah digunakan.  
+        Misi kami adalah mendigitalisasi proses absensi agar lebih cepat, akurat, dan dapat diakses kapan saja.  
+        Dengan demikian, guru, siswa, dan sekolah dapat lebih fokus pada kegiatan belajar mengajar tanpa terbebani urusan administrasi manual.
+      </p>
+    </div>
+  </section>
+
+  <!-- Moto -->
+  <section id="moto" class="py-16 bg-white">
+    <div class="container mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold text-blue-800 mb-6">Moto</h3>
+      <p class="max-w-xl mx-auto text-gray-700 italic">"Menyajikan aplikasi absensi yang tersentralisasi pada digital."</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+    <section id="contact" class="min-h-screen bg-gray-50 flex items-center justify-center p-8" 
+            style="background-image: url('URL_BACKGROUND_SKETCH'); background-size: cover;">
+        <div class="max-w-6xl w-full bg-white shadow-xl rounded-lg p-12 lg:p-16 border border-gray-200">
+            <div class="lg:flex lg:space-x-12">
+
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <h3 class="text-3xl font-semibold mb-8 text-gray-800">Contact</h3>
+                    
+                    <form id='kritiksaran' action="" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                        
+                        <div class="flex space-x-4 mb-6">
+                            <div class="relative w-1/2">
+                                <input class="w-full border-b-2 focus:border-blue-700 outline-none p-2 pt-6 peer transition-colors" 
+                                    id="name_form" name="nama_kritiksaran" required="" type="text" placeholder=" " />
+                                <label for="name_form" class="absolute left-2 top-0 text-sm text-gray-600 transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-3 peer-focus:top-0 peer-focus:text-sm peer-focus:text-blue-600">Name</label>
+                            </div>
+                            <div class="relative w-1/2">
+                                <input class="w-full border-b-2 focus:border-blue-700 outline-none p-2 pt-6 peer transition-colors" 
+                                    id="email_form" name="email_kritiksaran" required="" type="email" placeholder=" " />
+                                <label for="email_form" class="absolute left-2 top-0 text-sm text-gray-600 transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-3 peer-focus:top-0 peer-focus:text-sm peer-focus:text-blue-600">E-mail</label>
+                            </div>
+                        </div>
+                        
+                        <div class="relative mb-6">
+                            <textarea class="w-full border-b-2 focus:border-blue-700 outline-none p-2 pt-6 peer resize-none transition-colors" 
+                                    name="pesan_kritiksaran" id="pesan_form" rows="4" required="" type="text" placeholder=" "></textarea>
+                            <label for="pesan_form" class="absolute left-2 top-0 text-sm text-gray-600 transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-3 peer-focus:top-0 peer-focus:text-sm peer-focus:text-blue-600">Pesan</label>
+                            <span class="absolute bottom-2 right-2 text-gray-400"></span> </div>
+
+                        <span class="text-sm text-gray-500 italic mb-6 block">
+                            *Anda tidak perlu login untuk mengisi kritik dan saran
+                        </span>
+
+                        <div class="flex items-center">
+                            <button class="bg-white border-2 border-blue-500 text-blue-500 font-bold py-2 px-8 rounded-full hover:bg-blue-500 hover:text-white transition duration-300 shadow-md" 
+                                    type="submit" id="submit">Kirim</button>
+                        </div>
+                    </form>
                 </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Sosial Media</h3>
-                    <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/smkn8jktofficial" class="text-gray-300 hover:text-white">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://x.com/smkn8jkt" class="text-gray-300 hover:text-white">
-                            <i class="fab fa-x-twitter"></i>
-                        </a>
-                        <a href="https://www.instagram.com/delapanjkt" class="text-gray-300 hover:text-white">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://www.youtube.com/@Smkn8jkt" class="text-gray-300 hover:text-white">
-                            <i class="fab fa-youtube"></i>
-                        </a>
+
+                <div class="lg:w-1/2">
+                    <h3 class="text-3xl font-semibold mb-4 text-gray-800">SMK Negeri 8 Jakarta</h3>
+                    
+                    <div class="space-y-3 mb-6 text-gray-700">
+                        <p class="flex items-center">
+                            <i class="fa-solid fa-location-dot text-blue-500 mr-3"></i>
+                            Jl. Pejaten Raya, Kompleks Depdikbud, RT.07/RW.06, Pejaten Barat, Jakarta Selatan
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fa fa-phone text-blue-500 mr-3"></i>
+                            (021) 7996493
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fa fa-envelope text-blue-500 mr-3"></i>
+                            info@smkn8jakarta.sch.id 
+                        </p>
+                    </div>
+                    
+                    <div class="w-full h-80 rounded-lg overflow-hidden shadow-lg border border-gray-300">
+                        <iframe loading="lazy" title="SMA Negeri 2 Kebumen" 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.8915139996384!2d106.83406321419409!3d-6.277991363200373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f23e0287b8e1%3A0x2a98e9f790322749!2sSekolah%20Menengah%20Kejuruan%20Negeri%208%20Jakarta!5e0!3m2!1sid!2sid!4v1576403584132!5m2!1sid!2sid" 
+                                width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen=""></iframe>
                     </div>
                 </div>
             </div>
-            <div class="mt-12 pt-8 border-t border-gray-700">
-                <p class="text-gray-300 text-sm text-center">
-                    &copy; 2023 SMKN 8 Jakarta. All rights reserved.
-                </p>
-            </div>
         </div>
-    </footer>
+    </section>
 
-    <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-            } else {
-                menu.classList.add('hidden');
-            }
-        });
+  <!-- Script -->
+  <script>
+    const images = [
+       "/storage/slide/slide1.png",
+    //   "/storage/slide/slide2.jpg",
+    //   "/storage/slide/slide3.jpg"
+    ];
+    let currentIndex = 0;
+    const carouselImage = document.getElementById('carouselImage');
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    function changeSlide(direction) {
+      currentIndex = (currentIndex + direction + images.length) % images.length;
+      carouselImage.src = images[currentIndex];
+    }
+
+    // Auto-play setiap 5 detik
+    setInterval(() => {
+      changeSlide(1);
+    }, 5000);
+
+    function toggleMenu() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileMenu.classList.toggle('hidden');
+    }
+  </script>
 </body>
+@endsection
 </html>
